@@ -63,7 +63,12 @@ To demonstrate scanning an existing project and translating its IaC to modern C4
 cd ~/flooid-demo/sandpit
 ./migrate-tenant.sh --customer primark --source-project primark-prod-1a2b --target-family c4
 ```
-*(This script will generate a new Terraform file in the `./exports/` directory showing the upgraded `machine_type` configurations).*
+
+**How the Migration Simulation Works:**
+1. **Scanning**: It simulates scanning the `primark-prod-1a2b` project, finding existing N2 GKE Node Pools and VMs.
+2. **Codifying**: It simulates using GCP's `gcloud beta resource-config bulk-export` to turn that live infrastructure back into a legacy Terraform state file.
+3. **AI Translation**: It acts as the "Autonomous Agent," analyzing the workload and re-writing the Terraform file, upgrading the `machine_type` from `n2-standard-8` to `c4-standard-8`. It actually writes a physical file to your disk (`./exports/primark-sandbox-c4.tf`) to prove it did the work.
+4. **Provisioning**: It simulates deploying this newly modernized IaC into the Sandpit project for Q4 testing.
 
 ---
 
