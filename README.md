@@ -43,18 +43,27 @@ graph TD
     *   **GKE Namespaces:** For workload isolation and network policy boundaries.
     *   **IAM Service Accounts & Workload Identity:** Mapping GKE service accounts to GCP IAM for least-privilege access.
     *   **Cloud SQL Database:** Configured to clone from an anonymized production snapshot template.
-*   **`create-sandpit.sh`**: A terminal simulation script designed for live demonstrations to show the developer experience (DX) of provisioning these environments instantly.
+*   **`create-sandpit.sh`**: A terminal simulation script designed for live demonstrations to show the developer experience (DX) of provisioning on-demand sandpits instantly.
+*   **`migrate-tenant.sh`**: A simulation tool demonstrating how to codify an existing customer's legacy environment (e.g., Primark on N2 instances), translate the Infrastructure-as-Code via an agent, and re-deploy it into a sandbox using modernized instance families (e.g., C4) for Q4 peak testing.
 
 ---
 
-## 🚀 How to Run the Demo
+## 🚀 How to Run the Demos
 
-During the meeting, navigate to this directory and run the simulation script:
-
+### Demo 1: On-Demand Component Replicas
+During the meeting, run the simulation script to spin up an ephemeral environment:
 ```bash
 cd ~/flooid-demo/sandpit
 ./create-sandpit.sh --tenant retail-client-a
 ```
+
+### Demo 2: Codifying & Upgrading Legacy Environments (N2 -> C4)
+To demonstrate scanning an existing project and translating its IaC to modern C4 instances in a sandbox:
+```bash
+cd ~/flooid-demo/sandpit
+./migrate-tenant.sh --customer primark --source-project primark-prod-1a2b --target-family c4
+```
+*(This script will generate a new Terraform file in the `./exports/` directory showing the upgraded `machine_type` configurations).*
 
 ---
 
