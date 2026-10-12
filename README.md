@@ -58,6 +58,10 @@ cd ~/flooid-demo/sandpit
 ```
 
 ### Demo 2: Codifying & Upgrading Legacy Environments (N2 -> C4)
+
+**Sample AI Prompt for the Developer:**
+> *"I need to run Q4 peak load tests for Primark. Please scan their existing `primark-prod-1a2b` project, extract the current Terraform configuration, and generate a new Sandpit replica. As you write the new Terraform, upgrade their legacy N2 GKE nodes and VMs to the new C4 instance family for better performance. Make sure to apply all our standard Flooid sandpit security rules."*
+
 To demonstrate scanning an existing project and translating its IaC to modern C4 instances in a sandbox:
 ```bash
 cd ~/flooid-demo/sandpit
